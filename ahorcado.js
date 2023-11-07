@@ -1,4 +1,4 @@
-String.prototype.replaceAt=function(index, character) {return this.substr(0, index) + character + this.substr(index+character.length); }
+String.prototype.replaceAt=function(index, character) {return this.substring(0, index) + character + this.substring(index+character.length); }
 
 
 //Uso: palabraConGuiones = palabraConGuiones.replaceAt(i*2, letra);

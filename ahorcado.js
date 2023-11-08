@@ -6,13 +6,16 @@ String.prototype.replaceAt=function(index, character) { return this.substring(0,
 const palabras = ['pelota', 'Valentín', 'mamaguevo', 'doble elefante telepata de guerra'];
 
 const palabra = palabras[Math.floor(Math.random()*palabras.length)];
-const palabraConGuiones = palabra.replace(/./g, "_ ");
+let const palabraConGuiones = palabra.replace(/./g, "_ ");
 
+document.querySelector('output').innerHTML = palabraConGuiones
 document.querySelector('#calcular').addEventListener('click', () =>{
 	const letra = document.querySelector('#letra').value;
+	alert(palabra)
 
 	for(const i in palabra){
 		if(letra == palabra[i])
-	}
-	alert(letra)
+		palabraConGuiones = palabraConGuiones.replace(i*2, letra);
+		}
+		document.querySelector('output').innerHTML = palabraConGuiones
 })

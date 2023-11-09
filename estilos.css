@@ -1,7 +1,7 @@
 	#ahorcado{
-		height:318px;
-		width: 307px;
-		background-image: url('./hangman-game_pm-1320x273.png');
+		height: 280px;
+		width: 264px;
+		background-image: url('./hangman-game_pm-1320x273.jpeg');
 	}
 	#ganador{
 		display: none;
@@ -10,8 +10,9 @@
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		font-size: 5rem;
+		font-size: 5 rem;
 		position: fixed;
+		width:100%;
 		top:0;
 		left: 0;
 		background-color: white;

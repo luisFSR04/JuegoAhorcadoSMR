@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 
-	<head>
-
-	<meta charset="UTF-8">
-	<title>Juego ahorcado</title>
-	<link rel="stylesheet" href="./estilos.css">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="estilos.css" />
+    <title> Juego del Ahorcado</title>
 </head>
-<body> 
-	<h1> Juego del Ahorcado </h1>
-	<p>Escribe una letra</p>
-	
-	<input type="text" maxlength="1" id="letra"> <button id="calcular">Probar Letra</button>	
-	
-	
-	<p id="output"></p>
 
-	
-	<div id="ahorcado"></div>
+<body>
+    <div id="content-main">
+        <h1> Juego del Ahorcado</h1>
+        <div id="ahorcado"></div>
+        <p id="output"></p>
+    <div>
+        <input type="text" id="letra" maxlength="1" placeholder="Escribir aquí" autofocus>
+        <button id="calcular"> Evaluar letra</button>
+    </div>
+    <h1 id="resultado"></h1>
+</div>
 
-	<div class="ganador">
-		
-		<p>victoria</p>
-		<p>Enhorabuena</p>
-	</div>
-	<script src="ahorcado.js"></script>
-
+<script src="ahorcado.js"></script>
 </body>
+
 </html>

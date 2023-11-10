@@ -1,0 +1,18 @@
+	#ahorcado{
+		height:212px;
+		width: 204px;
+		background-image: url(´./file:///H:/1%20asmr/jorge%20practicas%20redes/hangman-game_pm-1024x212.jpg.webp´);
+	}
+	#ganador{
+		display: none:
+		height: 100vh;
+		dsiplay: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		font-size: 5rem;
+		position: fixed;
+		top:0;
+		left: 0;
+		background-color: white;
+	}

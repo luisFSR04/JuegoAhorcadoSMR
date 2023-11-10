@@ -1,38 +1,76 @@
-String.prototype.replaceAt=function(index, character) { return this.substring(0, index) + character + this.substring(index+character.length); } 
+let contadorFallos = 0;
+const palabras = ["pelotudos", "aplicaciones Web", "maradona", "albondigas", "messi"]; //palabras para el juego
 
+const palabra = palabras[Math.floor(Math.random() * palabras.length)]; //palabra random que aparecerá
+let palabrasConGuiones = palabra.replace(/./g, "_ "); //remplazar las palabras por guion y espacio /g es global
 
-//Uso: palabraConGuiones = palabraConGuiones.replaceAt(*2, letra);
+id("output").innerHTML = palabrasConGuiones; //imprime en <p>, palabrasConGuiones
 
-const palabras = ['perro', 'gato', 'casa', 'elefante'];
+const button = id("calcular");
+button.addEventListener("click", jugar);
 
-const palabra = palabras[Math.floor(Math.random()*palabras.length)];
-let palabraConGuiones = palabra.replace(/./g, "_ ");
-let contadorFallos = 0
-document.querySelector('output').innerHTML = palabraConGuiones
-document.querySelector('#calcular').addEventListener('click', () =>{
-	const letra = document.querySelector('#letra').value;
-	lethaFallado = true;}
-)
-	for(const i in palabra){
-		if(letra == palabra[i])
-		palabraConGuiones = palabraConGuiones.replace(i*2, letra);
-		haFallado = false;
-	}
+function jugar() {
 
-	if(haFallado) {
-		contadorFallos++;
-		document.querySelector('#ahorcado').style.backgroundPosition = -(307*contadorFallos) + 'px'
-		if(contadorFallos == 4){
-			alert("perdiste el juego")
+	let letra = id("letra").value;		//obtener el valor de la letra ingresada en id letra y guardarla en la const letra.
+	letra = letra.toLowerCase(); 		//convertir letra ingresada en minuscula
+
+	let haFallado = true;
+
+	for (const i in palabra) {
+		if (letra == palabra[i]) {		//remplaza si encuentra la letra ingresada en palabra.
+			palabrasConGuiones = reemplazar(palabrasConGuiones, i * 2, letra);
+			haFallado = false;
 		}
-	}else{
-		if(palabraConGuiones.indexOf('_') <0){
-			document.querySelector('#ganador').style.display ='flex'
 	}
 
+	/* condición de ganador o perdedor */
+	if (haFallado) {
+		contadorFallos++;
+		moveImg();
+	if (contadorFallos > 2) {
+		moveImg2();
+	}
+	if (contadorFallos >= 5) {
+		msjPerdio();
+		button.disabled = true;
+	}
+	} else {
+	  if (palabrasConGuiones.indexOf("_") < 0) {
+		msjGano();
+		button.disabled = true;
+	  }
+	}
 
-		document.querySelector('output').innerHTML = palabraConGuiones
+	/* reemplazar los datos de id output por la variable palabra con guiones */
+	id("output").innerHTML = palabrasConGuiones;
+}
 
-	document.querySelector('#letra').value = '';
-	document.querySelector('#letra').focus();
+
+function reemplazar(palabra,index, character) {
+	return (
+		palabra.substring(0, index) + 		//elimina los "_ " hasta donde se encontro index
+		character + 						//ingresael caracter que se ingreso
+		palabra.substring(index + character.length) 	//rellena los demás "_ "
+	);
 };
+
+function msjPerdio() {
+	id("resultado").innerHTML = "Perdiste, has sido ahorcado.";
+	id("resultado").style.backgroundColor = "#0c5ca7";
+}
+
+function msjGano() {
+	id("resultado").innerHTML = "¡¡HAS GANADO !!";
+	id("resultado").style.backgroundColor = "#0c5ca7";
+}
+
+function moveImg() {
+	id("ahorcado").style.backgroundPosition = -(180 * contadorFallos) + "px 0px";
+}
+function moveImg2() {
+	id("ahorcado").style.backgroundPosition = -(198 * contadorFallos) + "px 220px";
+}
+
+function id(variable) {
+	return document.getElementById(variable);
+}

@@ -1,5 +1,5 @@
 let contadorFallos = 0;
-const palabras = ["pelotudos", "aplicaciones Web", "maradona", "albondigas", "messi"]; //palabras para el juego
+const palabras = ["pelotudos", "aplicaciones web", "maradona", "albondigas", "messi"]; //palabras para el juego
 
 const palabra = palabras[Math.floor(Math.random() * palabras.length)]; //palabra random que aparecerá
 let palabrasConGuiones = palabra.replace(/./g, "_ "); //remplazar las palabras por guion y espacio /g es global
